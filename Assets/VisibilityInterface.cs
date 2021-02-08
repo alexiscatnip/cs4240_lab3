@@ -8,7 +8,7 @@ public class VisibilityInterface : MonoBehaviour
     public void Disable()
     {
         this.enabled = false;
-
+        this.gameObject.GetComponent<MyVideoPlayer>().pauseVideo();
     }
 
     public void Enable()

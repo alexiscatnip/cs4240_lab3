@@ -6,11 +6,15 @@ public class MyVideoPlayer : MonoBehaviour
     //1 touch detection of the finger touch the picture.
     //2 play the video
     //3 activate and deactivate the play and pause overlay
+    //4 set time of the UI time indicator
     
 
     public UnityEngine.Video.VideoClip videoClip;
     private Touch theTouch;
     public GameObject overlayGO;
+    private UnityEngine.Video.VideoPlayer vp;
+    public GameObject timeUItext;
+    private int vidDuration;
 
     void Start()
     {
@@ -26,8 +30,11 @@ public class MyVideoPlayer : MonoBehaviour
         // Restart from beginning when done.
         videoPlayer.isLooping = true;
         videoPlayer.SetTargetAudioSource(0, audioSource);
+
+        vp = videoPlayer;
+        vidDuration = (int)vp.clip.length;
     }
-     
+
 
     void Update()
     {
@@ -52,25 +59,35 @@ public class MyVideoPlayer : MonoBehaviour
                 }
                  
             }
-        } 
+        }
+        //update ui time display
+        timeUItext.GetComponent<TMPro.TMP_Text> ().text =  ((int)vp.time).ToString() + " / " +vidDuration.ToString();
     }
 
     private void toggleVideoPlaying()
     {
-        var vp = GetComponent<UnityEngine.Video.VideoPlayer>();
         if (vp.isPlaying)
         {
-            Debug.Log("Video pause!");
-            vp.Pause();
-            overlayGO.GetComponent<PlayPauseOverlay>().ShowPlayTexture();
+            pauseVideo();
         }
         else
         {
-            Debug.Log("Video play!");
-            vp.Play();
-            overlayGO.GetComponent<PlayPauseOverlay>().ShowNoTexture();
+            playVideo();
         }
     }
 
-     
+    public void playVideo()
+    {
+        Debug.Log("Video play!");
+        vp.Play();
+        overlayGO.GetComponent<PlayPauseOverlay>().ShowNoTexture();
+    }
+
+    public void pauseVideo()
+    {
+        Debug.Log("Video pause!");
+        vp.Pause();
+        overlayGO.GetComponent<PlayPauseOverlay>().ShowPlayTexture();
+    }
+
 }
