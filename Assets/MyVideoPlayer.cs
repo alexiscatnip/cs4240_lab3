@@ -4,6 +4,7 @@ public class MyVideoPlayer : MonoBehaviour
 {
     public UnityEngine.Video.VideoClip videoClip;
     private Touch theTouch;
+    public GameObject overlayGO;
 
     void Start()
     {
@@ -16,8 +17,11 @@ public class MyVideoPlayer : MonoBehaviour
         videoPlayer.targetMaterialRenderer = GetComponent<Renderer>();
         videoPlayer.targetMaterialProperty = "_MainTex";
         videoPlayer.audioOutputMode = UnityEngine.Video.VideoAudioOutputMode.AudioSource;
+        // Restart from beginning when done.
+        videoPlayer.isLooping = true;
         videoPlayer.SetTargetAudioSource(0, audioSource);
     }
+     
 
     void Update()
     {
@@ -38,18 +42,9 @@ public class MyVideoPlayer : MonoBehaviour
                         Debug.Log("User touch hit GO: " + gameObject.name);
                         toggleVideoPlaying();
                     }
-
-                    //OR with Tag
-
-                    //if (raycastHit.collider.CompareTag("SoccerTag"))
-                    //{
-                    //    Debug.Log("Soccer Ball clicked");
-                    //}
+                     
                 }
-
-                //play/pause video.
-                //toggleVideoPlaying();
-
+                 
             }
         } 
     }
@@ -61,11 +56,13 @@ public class MyVideoPlayer : MonoBehaviour
         {
             Debug.Log("Video pause!");
             vp.Pause();
+            overlayGO.GetComponent<PlayPauseOverlay>().ShowPlayTexture();
         }
         else
         {
             Debug.Log("Video play!");
             vp.Play();
+            overlayGO.GetComponent<PlayPauseOverlay>().ShowNoTexture();
         }
     }
 
