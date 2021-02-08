@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class MyVideoPlayer : MonoBehaviour
 {
+    //handles the:
+    //1 touch detection of the finger touch the picture.
+    //2 play the video
+    //3 activate and deactivate the play and pause overlay
+    
+
     public UnityEngine.Video.VideoClip videoClip;
     private Touch theTouch;
     public GameObject overlayGO;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VisibilityInterface : MonoBehaviour
 {
-    //an interface, accessible by outsiders, that can toggle this GO's visbility
+    //an interface, accessible by outsiders, that can toggle this GO's isEnable
     public void Disable()
     {
         this.enabled = false;
