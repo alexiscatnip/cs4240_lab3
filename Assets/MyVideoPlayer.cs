@@ -16,7 +16,12 @@ public class MyVideoPlayer : MonoBehaviour
     public GameObject timeUItext;
     private int vidDuration;
 
-    void Start()
+    void Start(){ 
+        InitVideoPlayer();
+
+    }
+
+    void InitVideoPlayer() //Known Bug: video will start from the beginning if this gameobject is DISABLED (this occurs when the image goes out of tracking(frame)). this is because the video init is put inside start(). see unity GO lifecycle.
     {
         var videoPlayer = gameObject.AddComponent<UnityEngine.Video.VideoPlayer>();
         var audioSource = gameObject.AddComponent<AudioSource>();
@@ -50,7 +55,7 @@ public class MyVideoPlayer : MonoBehaviour
                 RaycastHit raycastHit; //contains the "context of the kena hit"
                 if (Physics.Raycast(raycast, out raycastHit))
                 {
-                    if (raycastHit.collider.name == gameObject.name)
+                    if (raycastHit.collider == gameObject.GetComponent<Collider>())
                     {
                         Debug.Log("User touch hit GO: " + gameObject.name);
                         toggleVideoPlaying();

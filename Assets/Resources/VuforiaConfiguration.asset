@@ -17,10 +17,10 @@ MonoBehaviour:
     ufoLicenseKey: QVhVUkNqWC8vLy8vQUFBQUtPSHptOElhS0VJemlGM21Bdkg5L0RRYThGS1p6Mnp6Y0IzTmJSQzU4U0cxNXZoZjdSUWpEUmpFa2lwU0dQK3VXSmp1aDRVUHZqbGo1d2I5dVRNVVVwS2VSeSsvZnUwZXMzY1J1NnBSbXNMZVpDbXJnNlY0YkZTZ0s2dmZGbDZ0MmdjdTYvdkZ2NDIycUk5U01OeFVsQVpSUEs1TEoyc3o2dlB5T1dQTUJ0b1lSSkEwM2I4UWpPK1BmeE5kaFVSb1JoTXVuYU9vZkN5am5mbTI0QmRKaHY4ZFI0Yld3a3BXQ3R0Uy80YjdzcUJlUjZOVDlBZUhXZWlNQUdyeEFyNG5rOHZCSGVXMXJ4MnU2UzRxeHBMRHpDaFdTWjB1aGxTSWVET2N3am1BTEFtNDdSaXFvQ1gvbGlMMUsxV0QxdEp2UUZxYVZCYnNPaFRRRC96bVBOdnhGd3lhZVkyQ2RrQ0dZL3J5NjFKU3lVaVM=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
-    maxSimultaneousImageTargets: 1
+    maxSimultaneousImageTargets: 5
     maxSimultaneousObjectTargets: 1
     virtualSceneScaleFactor: 1
-    useDelayedLoadingObjectTargets: 0
+    useDelayedLoadingObjectTargets: 1
     modelTargetRecoWhileExtendedTracked: 1
     shareRecordingsInITunes: 0
     version: 9.7.4
