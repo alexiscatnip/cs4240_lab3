@@ -60,11 +60,35 @@ public class MyVideoPlayer : MonoBehaviour
                         Debug.Log("User touch hit GO: " + gameObject.name);
                         toggleVideoPlaying();
                     }
+                    else
+                    {
+                        Debug.Log("User touch hit some other GO: " + gameObject.name);
+                    }
                      
                 }
                  
             }
         }
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("User clicked");
+            Ray raycast = Camera.main.ScreenPointToRay(theTouch.position); //shoot ray from cam, to the object kena touched
+            RaycastHit raycastHit; //contains the "context of the kena hit"
+            if (Physics.Raycast(raycast, out raycastHit))
+            {
+                if (raycastHit.collider == gameObject.GetComponent<Collider>())
+                {
+                    Debug.Log("User click hit GO: " + gameObject.name);
+                    toggleVideoPlaying();
+                }
+                //else
+                //{
+                //    Debug.Log("User click hit some other GO: " + gameObject.name);
+                //}
+            }
+        }
+
         //update ui time display
         timeUItext.GetComponent<TMPro.TMP_Text> ().text =  ((int)vp.time).ToString() + " / " +vidDuration.ToString();
     }
